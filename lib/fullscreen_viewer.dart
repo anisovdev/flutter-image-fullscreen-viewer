@@ -18,8 +18,10 @@ class FullscreenViewer extends StatefulWidget {
   State<FullscreenViewer> createState() => _FullscreenViewerState();
 }
 
-class _FullscreenViewerState extends State<FullscreenViewer> with TickerProviderStateMixin {
-  double get dragCoef => min(1, (min(deltaController.value.abs(), 50) - 50).abs() / 50);
+class _FullscreenViewerState extends State<FullscreenViewer>
+    with TickerProviderStateMixin {
+  double get dragCoef =>
+      min(1, (min(deltaController.value.abs(), 50) - 50).abs() / 50);
   double scale = 1;
   late final deltaController = AnimationController(
     vsync: this,
@@ -50,7 +52,8 @@ class _FullscreenViewerState extends State<FullscreenViewer> with TickerProvider
           builder: (context, child) => AnimatedBuilder(
             animation: widget.openAnimation,
             builder: (context, _) => Container(
-              color: Colors.black87.withOpacity(widget.openAnimation.value * dragCoef),
+              color: Colors.black87
+                  .withOpacity(widget.openAnimation.value * dragCoef),
               child: Transform.translate(
                 offset: Offset(0, deltaController.value),
                 child: child,
@@ -62,7 +65,11 @@ class _FullscreenViewerState extends State<FullscreenViewer> with TickerProvider
               minScale: 1,
               transformationController: transformController,
               onInteractionEnd: (details) {
-                if (details.velocity.pixelsPerSecond.dy.abs() + deltaController.value.abs() > 50 && !scaled && canPop) {
+                if (details.velocity.pixelsPerSecond.dy.abs() +
+                            deltaController.value.abs() >
+                        50 &&
+                    !scaled &&
+                    canPop) {
                   Navigator.pop(context);
                 } else {
                   deltaController.animateTo(0.0);
