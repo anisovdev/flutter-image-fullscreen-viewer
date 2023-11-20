@@ -16,8 +16,9 @@ dev_dependencies:
     sdk: flutter
   flutter_lints: ^2.0.0
 
+platforms:
+  ios
+  android
+  web
+
 flutter:
-  platforms:
-    ios
-    android
-    web
