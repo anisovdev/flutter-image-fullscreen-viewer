@@ -42,10 +42,6 @@ FullscreenImageViewer.open(
 );
 ```
 
-## Example
-
-Check out the example directory for a sample implementation.
-
 ## Issues and Feedback
 
 Please report any issues or provide feedback on the [GitHub repository](https://github.com/anisovdev/flutter-image-fullscreen-viewer).
