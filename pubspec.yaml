@@ -1,6 +1,6 @@
 name: fullscreen_image_viewer
 description: A Flutter package that provides a customizable fullscreen image viewer with zoom and drag-to-dismiss features.
-version: 0.0.4
+version: 0.0.5
 homepage: https://github.com/anisovdev/flutter-image-fullscreen-viewer
 
 environment:
