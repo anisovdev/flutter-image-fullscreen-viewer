@@ -22,6 +22,10 @@ Then run:
 $ flutter pub get
 ```
 
+## Preview
+
+https://github.com/user-attachments/assets/87bce176-e05c-4835-9a7b-588566451fa9
+
 ## Usage
 
 Import the package in your Dart file:
