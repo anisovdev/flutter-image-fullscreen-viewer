@@ -1,1 +1,5 @@
-example/
+example/android
+example/ios
+example/linux
+example/web
+example/windows
