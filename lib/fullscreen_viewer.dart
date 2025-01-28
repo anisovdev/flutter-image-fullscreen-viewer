@@ -52,8 +52,9 @@ class _FullscreenViewerState extends State<FullscreenViewer>
           builder: (context, child) => AnimatedBuilder(
             animation: widget.openAnimation,
             builder: (context, _) => Container(
-              color: Colors.black
-                  .withOpacity(0.7 * widget.openAnimation.value * dragCoef),
+              color: Colors.black.withValues(
+                alpha: 0.7 * widget.openAnimation.value * dragCoef,
+              ),
               child: Transform.translate(
                 offset: Offset(0, deltaController.value),
                 child: child,
