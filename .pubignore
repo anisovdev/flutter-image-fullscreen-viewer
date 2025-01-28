@@ -1,5 +1,8 @@
-example/android
-example/ios
-example/linux
-example/web
-example/windows
+example/ios/
+example/android/
+example/web/
+example/linux/
+example/macos/
+example/windows/
+build/
+coverage/
