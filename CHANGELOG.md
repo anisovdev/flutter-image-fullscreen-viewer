@@ -2,7 +2,8 @@
 
 All notable changes to this project will be documented in this file.
 ## [1.1.0] - ????-??-??
-- Remove deprecated members 
+- Added FullscreenViewerWrapper to make using package more simple
+- Remove deprecated members
 
 ## [1.0.2] - 2025-01-28
 - Show preview as gif in README.md
