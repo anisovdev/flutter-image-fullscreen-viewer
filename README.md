@@ -24,7 +24,7 @@ $ flutter pub get
 
 ## Preview
 
-https://github.com/user-attachments/assets/87bce176-e05c-4835-9a7b-588566451fa9
+![preview.gif](https://github.com/user-attachments/assets/39d1be70-6d3e-4808-8af8-a71fb4e48bbc)
 
 ## Usage
 
