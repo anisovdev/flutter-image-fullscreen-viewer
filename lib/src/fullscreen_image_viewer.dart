@@ -10,12 +10,14 @@ class FullscreenImageViewer {
     required BuildContext context,
     required Widget child,
     Widget? closeWidget,
+    bool barrierDismissible = true,
   }) {
     return Navigator.of(context, rootNavigator: true).push(
       PageRouteBuilder(
         fullscreenDialog: true,
         opaque: false,
         pageBuilder: (context, animation, _) => FullscreenViewer(
+          barrierDismissible: barrierDismissible,
           openAnimation: animation,
           closeWidget: closeWidget,
           child: child,

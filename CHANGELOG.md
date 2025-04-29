@@ -1,6 +1,10 @@
 # Changelog
 
 All notable changes to this project will be documented in this file.
+## [1.2.0] - 2025-01-28
+- Fixed issue where tapping on the image content unintentionally popped the page.
+- Fixed bug preventing zoom-out after maximum zoom-in with two fingers.
+
 ## [1.1.0] - 2025-01-28
 - Added FullscreenViewerWrapper to make using package more simple
 - Remove deprecated members

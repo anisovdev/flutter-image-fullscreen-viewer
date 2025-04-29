@@ -6,12 +6,14 @@ class FullscreenViewer extends StatefulWidget {
   final Animation<double> openAnimation;
   final Widget? closeWidget;
   final Widget child;
+  final bool barrierDismissible;
 
   const FullscreenViewer({
     super.key,
     required this.openAnimation,
     required this.child,
     this.closeWidget,
+    required this.barrierDismissible,
   });
 
   @override
@@ -22,7 +24,8 @@ class _FullscreenViewerState extends State<FullscreenViewer>
     with TickerProviderStateMixin {
   double get dragCoef =>
       min(1, (min(deltaController.value.abs(), 50) - 50).abs() / 50);
-  double scale = 1;
+
+  double get scale => transformController.value.getMaxScaleOnAxis();
   late final deltaController = AnimationController(
     vsync: this,
     upperBound: 300,
@@ -51,45 +54,54 @@ class _FullscreenViewerState extends State<FullscreenViewer>
           animation: deltaController,
           builder: (context, child) => AnimatedBuilder(
             animation: widget.openAnimation,
-            builder: (context, _) => Container(
-              color: Colors.black.withValues(
-                alpha: 0.7 * widget.openAnimation.value * dragCoef,
-              ),
-              child: Transform.translate(
-                offset: Offset(0, deltaController.value),
-                child: child,
+            builder: (context, _) => GestureDetector(
+              onTap: widget.barrierDismissible
+                  ? () => Navigator.pop(context)
+                  : null,
+              child: Container(
+                color: Colors.black.withValues(
+                  alpha: 0.7 * widget.openAnimation.value * dragCoef,
+                ),
+                child: Transform.translate(
+                  offset: Offset(0, deltaController.value),
+                  child: child,
+                ),
               ),
             ),
           ),
           child: Center(
-            child: InteractiveViewer(
-              minScale: 1,
-              transformationController: transformController,
-              onInteractionEnd: (details) {
-                if (details.velocity.pixelsPerSecond.dy.abs() +
-                            deltaController.value.abs() >
-                        50 &&
-                    !scaled &&
-                    canPop) {
-                  Navigator.pop(context);
-                } else {
-                  deltaController.animateTo(0.0);
-                }
-                if (details.pointerCount == 0) {
-                  canPop = true;
-                }
-              },
-              onInteractionUpdate: (details) {
-                if (details.pointerCount > 1) {
-                  canPop = false;
-                  scale = details.scale.clamp(1, 2.5);
-                }
-                if (!scaled && canPop) {
-                  deltaController.value += details.focalPointDelta.dy;
-                }
-              },
-              clipBehavior: Clip.none,
-              child: widget.child,
+            child: GestureDetector(
+              // To prevent dismiss when onTap on content
+              onTap: () {},
+              child: InteractiveViewer(
+                minScale: 1,
+                transformationController: transformController,
+                onInteractionEnd: (details) {
+                  if (details.velocity.pixelsPerSecond.dy.abs() +
+                              deltaController.value.abs() >
+                          50 &&
+                      !scaled &&
+                      canPop) {
+                    Navigator.pop(context);
+                  } else {
+                    deltaController.animateTo(0.0);
+                  }
+
+                  if (details.pointerCount == 0) {
+                    canPop = true;
+                  }
+                },
+                onInteractionUpdate: (details) {
+                  if (details.pointerCount > 1) {
+                    canPop = false;
+                  }
+                  if (!scaled && canPop) {
+                    deltaController.value += details.focalPointDelta.dy;
+                  }
+                },
+                clipBehavior: Clip.none,
+                child: widget.child,
+              ),
             ),
           ),
         ),
