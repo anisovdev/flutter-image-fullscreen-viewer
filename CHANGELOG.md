@@ -1,6 +1,12 @@
 # Changelog
 
 All notable changes to this project will be documented in this file.
+## [1.3.0] - 2026-11-24
+- Fixed zooming out with two fingers placed outside of the initial image bounds: the viewer now handles gestures over the whole screen ([#3](https://github.com/anisovdev/flutter-image-fullscreen-viewer/issues/3)).
+- Zoomed image is kept inside the screen while panning: it covers the screen or stays centered when it is smaller.
+- The package no longer imports `package:flutter/material.dart` and works with both `material_ui` and the legacy Material library.
+- Example migrated to `material_ui`.
+
 ## [1.2.0] - 2025-01-28
 - Fixed issue where tapping on the image content unintentionally popped the page.
 - Fixed bug preventing zoom-out after maximum zoom-in with two fingers.

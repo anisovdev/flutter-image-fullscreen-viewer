@@ -13,7 +13,7 @@ To use this package, add `fullscreen_image_viewer` as a dependency in your `pubs
 
 ```yaml
 dependencies:
-  fullscreen_image_viewer: ^1.0.0
+  fullscreen_image_viewer: ^1.3.0
 ```
 
 Then run:

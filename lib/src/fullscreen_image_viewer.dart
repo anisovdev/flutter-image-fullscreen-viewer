@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:fullscreen_image_viewer/src/fullscreen_viewer.dart';
 
 class FullscreenImageViewer {
